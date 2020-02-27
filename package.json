@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/Digiox/My-contribution#readme",
   "dependencies": {
-    "axios": "^0.19.2"
+   
   },
   "devDependencies": {
     "jest": "^25.1.0"
