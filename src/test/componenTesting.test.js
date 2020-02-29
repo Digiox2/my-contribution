@@ -5,9 +5,10 @@ import App from "../App"
 import { render, cleanup } from "@testing-library/react"
 import Adapter from "enzyme-adapter-react-16"
 import Main from "../components/Main/Main"
+import introImg from "../assets/imgs/undraw_version_control_9bpv.svg"
 configure({ adapter: new Adapter() })
 
 it("Should render <Main /> component", () => {
     const comp = shallow(<Main />);
-    expect(comp.find('img#main_intro_img').prop("src")).toBe(process.env.PUBLIC_URL+"imgs/undraw_version_control_9bpv.svg")
+    expect(comp.find('img#main_intro_img').prop("src")).toBe(introImg)
 })
