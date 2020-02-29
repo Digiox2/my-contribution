@@ -1,7 +1,7 @@
 language: node_js
 script:
   - yarn test
-  - yarn build
+  - yarn run build
 deploy:
   provider: pages
   skip_cleanup: true
