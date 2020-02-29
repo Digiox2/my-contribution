@@ -16,7 +16,7 @@ function App() {
         <Route exact path={process.env.PUBLIC_URL+"/"}>
         <Main />
         </Route>
-        <Route  path={"*"}>
+        <Route  path={process.env.PUBLIC_URL + "*"}>
         <UnknownPath />
         </Route>
       </Switch>
