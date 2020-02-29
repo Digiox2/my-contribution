@@ -9,5 +9,5 @@ configure({ adapter: new Adapter() })
 
 it("Should render <Main /> component", () => {
     const comp = shallow(<Main />);
-    expect(comp.find('img#main_intro_img').prop("src")).toBe("imgs/undraw_version_control_9bpv.svg")
+    expect(comp.find('img#main_intro_img').prop("src")).toBe(process.env.PUBLIC_URL+"imgs/undraw_version_control_9bpv.svg")
 })
