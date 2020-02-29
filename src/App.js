@@ -8,7 +8,6 @@ import {
 import UnknownPath from './components/Errors/UnknownPath';
 import Main from './components/Main/Main';
 
-
 function App() {
   return (
     <Router>
