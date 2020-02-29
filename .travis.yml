@@ -1,7 +1,14 @@
 language: node_js
+node_js:
+  - 10
+  
+install: 
+  - yarn install
+
 script:
   - yarn test
   - yarn run build
+
 deploy:
   provider: pages
   skip_cleanup: true
@@ -9,6 +16,4 @@ deploy:
   keep_history: true
   local_dir: build
   on:
-    branch: deploy-branch
-node_js:
-  - 10
+    branch: master
