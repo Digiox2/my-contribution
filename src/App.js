@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
@@ -9,10 +9,11 @@ import UnknownPath from './components/Errors/UnknownPath';
 import Main from './components/Main/Main';
 
 function App() {
+  console.log(process.env.PUBLIC_URL)
   return (
-    <Router  >
+    <Router >
       <Switch>
-        <Route exact path={"/"}>
+        <Route exact path={process.env.PUBLIC_URL+"/"}>
         <Main />
         </Route>
         <Route  path={"*"}>

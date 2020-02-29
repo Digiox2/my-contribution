@@ -9,6 +9,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import "./main.css"
+import introIMG from "../../assets/imgs/undraw_version_control_9bpv.svg"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -91,7 +92,7 @@ export default function Main() {
             </AppBar>
             <section className={classes.main_body_section}>
                 <div id="main_div_img_container" className={classes.main_img_container}>
-                    <img id="main_intro_img" className={classes.main_intro_img} src="imgs/undraw_version_control_9bpv.svg" alt="versioning-img" />
+                    <img id="main_intro_img" className={classes.main_intro_img} src={introIMG} alt="versioning-img" />
                     <h2 className={classes.main_intro_text}>Ne cherchez plus de projets, vous venez de les trouver</h2>
                 </div>
             </section>
