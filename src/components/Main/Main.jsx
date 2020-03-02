@@ -55,7 +55,7 @@ export default function Main() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        My contribution
+                        My contributionn
           </Typography>
                     {auth && (
                         <div>
