@@ -24,12 +24,24 @@ const useStyles = makeStyles(theme => ({
     main_body_section: {
         marginTop: "5%",
         justifyContent: "center",
-        display: "flex"
+        display: "flex",
+        marginBottom: "30px"
     },
-    main_img_container: {position: "relative", display: "flex", justifyContent: "center", width: "30%" },
+    main_img_container: {position: "relative", display: "flex", justifyContent: "center", width: "30%", [theme.breakpoints.only('xs')]: {
+        fontSize: "0.9em",
+        width: "70%"
+      }, },
     main_intro_text: { position: "absolute", top: "25%" },
     main_intro_img: {
         width: "100%"
+    },
+    sectionTitle_main_content: {
+        width: "100%",
+        backgroundColor: "#3F51B5"
+    },
+    main_content_title: {
+        padding: "10px",
+        color: "white"
     }
 }));
 
@@ -55,7 +67,7 @@ export default function Main() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        My contributionn
+                        My contribution
           </Typography>
                     {auth && (
                         <div>
@@ -95,6 +107,12 @@ export default function Main() {
                     <img id="main_intro_img" className={classes.main_intro_img} src={introIMG} alt="versioning-img" />
                     <h2 className={classes.main_intro_text}>Ne cherchez plus de projets, vous venez de les trouver</h2>
                 </div>
+            </section>
+            <section>
+                <div className={classes.sectionTitle_main_content}>
+                                <h2 className={classes.main_content_title}>Open source projects</h2>
+                </div>
+                
             </section>
         </div>);
 }
