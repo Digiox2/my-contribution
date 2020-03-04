@@ -1,7 +1,7 @@
 {
   "name": "my-contribution",
   "version": "0.1.0",
-  "homepage": "https://digiox.github.io/my-contributionpackage/",
+  "homepage": "https://digiox.github.io/my-contribution",
   "private": false,
   "dependencies": {
     "@material-ui/core": "^4.9.4",
