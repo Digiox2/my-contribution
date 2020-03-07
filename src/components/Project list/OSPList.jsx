@@ -1,10 +1,20 @@
 import React from 'react';
 
 
+import NoProjects from './NoProjects';
 
-const OSPList = () => {
+
+  
+
+const OSPList = (props) => {
+   
+console.log(props.datas.length)
     return (
-        <h1>No datas</h1>
+        <div>
+            {
+            props.datas.length < 1 ?  <NoProjects /> : <h1>test</h1>
+        }
+        </div>
     );
 }
 

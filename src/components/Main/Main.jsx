@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,6 +10,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import "./main.css"
 import introIMG from "../../assets/imgs/undraw_version_control_9bpv.svg"
+
+import OSPList from '../Project list/OSPList';
+import firebase from "../../firebase-config/firebaseConfig"
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -27,10 +31,12 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         marginBottom: "30px"
     },
-    main_img_container: {position: "relative", display: "flex", justifyContent: "center", width: "30%", [theme.breakpoints.only('xs')]: {
-        fontSize: "0.9em",
-        width: "70%"
-      }, },
+    main_img_container: {
+        position: "relative", display: "flex", justifyContent: "center", width: "30%", [theme.breakpoints.only('xs')]: {
+            fontSize: "0.9em",
+            width: "70%"
+        },
+    },
     main_intro_text: { position: "absolute", top: "25%" },
     main_intro_img: {
         width: "100%"
@@ -44,13 +50,16 @@ const useStyles = makeStyles(theme => ({
         color: "white"
     }
 }));
+const db = firebase.firestore()
+
 
 export default function Main() {
     const classes = useStyles();
     const auth = true
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [datas, setDatas] = useState([])
     const open = Boolean(anchorEl);
-    
+
     const handleMenu = event => {
         setAnchorEl(event.currentTarget);
     };
@@ -59,6 +68,21 @@ export default function Main() {
         setAnchorEl(null);
     };
 
+
+
+    useEffect(() => {
+        if (datas.length < 1) {
+            db.collection("repos").get().then((data) => {
+                let newState = []
+                data.forEach(async (doc) => {
+                    console.log("Data received: " , doc.data())
+                    newState.push(doc.data())
+                })
+                setDatas(newState)
+            })
+        }
+    })
+    console.log(datas)
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -110,9 +134,9 @@ export default function Main() {
             </section>
             <section>
                 <div className={classes.sectionTitle_main_content}>
-                                <h2 className={classes.main_content_title}>Open source projects</h2>
+                    <h2 className={classes.main_content_title}>Open source projects</h2>
                 </div>
-                
+                <OSPList datas={datas} />
             </section>
         </div>);
 }
