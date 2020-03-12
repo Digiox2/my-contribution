@@ -8,16 +8,24 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import Button from '@material-ui/core/Button';
 import "./main.css"
 import introIMG from "../../assets/imgs/undraw_version_control_9bpv.svg"
 
 import OSPList from '../Project list/OSPList';
 import firebase from "../../firebase-config/firebaseConfig"
 
+import githubSignInProvider from "../Github interface/signInProvider"
+import addProject from '../addProject/AddProject';
+import AddProject from '../addProject/AddProject';
+
+
+
 
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
+        zIndex: 0
     },
     menuButton: {
         marginRight: theme.spacing(2),
@@ -42,23 +50,33 @@ const useStyles = makeStyles(theme => ({
         width: "100%"
     },
     sectionTitle_main_content: {
+        display: "flex",
         width: "100%",
-        backgroundColor: "#3F51B5"
+        backgroundColor: "#3F51B5",
+        justifyContent: "space-between"
     },
     main_content_title: {
         padding: "10px",
         color: "white"
+    },
+    alert: {
+        zIndex: "1000"
+
     }
 }));
 const db = firebase.firestore()
 
 
 export default function Main() {
+
+
     const classes = useStyles();
     const auth = true
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [datas, setDatas] = useState([])
-    const open = Boolean(anchorEl);
+    const [showAddProject, setShowAddProject] = useState(false)
+   
+
 
     const handleMenu = event => {
         setAnchorEl(event.currentTarget);
@@ -75,16 +93,17 @@ export default function Main() {
             db.collection("repos").get().then((data) => {
                 let newState = []
                 data.forEach(async (doc) => {
-                    console.log("Data received: " , doc.data())
+                    console.log("Data received: ", doc.data())
                     newState.push(doc.data())
                 })
                 setDatas(newState)
             })
         }
     })
-    console.log(datas)
+
     return (
         <div className={classes.root}>
+            <AddProject callBack={(openState) => setShowAddProject(openState)} show={showAddProject} />
             <AppBar position="static">
                 <Toolbar>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
@@ -116,7 +135,7 @@ export default function Main() {
                                     vertical: 'top',
                                     horizontal: 'right',
                                 }}
-                                open={open}
+                                // open={open}
                                 onClose={handleClose}
                             >
                                 <MenuItem onClick={handleClose}>Profile</MenuItem>
@@ -135,6 +154,7 @@ export default function Main() {
             <section>
                 <div className={classes.sectionTitle_main_content}>
                     <h2 className={classes.main_content_title}>Open source projects</h2>
+                    <Button onClick={() => {setShowAddProject(true)}} color="secondary">Ajouter un projet</Button>
                 </div>
                 <OSPList datas={datas} />
             </section>
