@@ -6,7 +6,7 @@ install:
   - yarn install
 
 script:
-  - yarn test
+  - yarn test --detectOpenHandles
   - yarn run build
 
 deploy:
