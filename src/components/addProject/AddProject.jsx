@@ -4,7 +4,6 @@ import Modal from '@material-ui/core/Modal';
 import firebase from "../../firebase-config/firebaseConfig";
 import Button from '@material-ui/core/Button';
 import signInProvider from "../Github interface/signInProvider";
-import SubmitProject from "../submitProject/SubmitProject.jsx"
 
 const useStyles = makeStyles(theme => ({
   paper: {

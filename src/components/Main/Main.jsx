@@ -11,12 +11,8 @@ import Menu from '@material-ui/core/Menu';
 import Button from '@material-ui/core/Button';
 import "./main.css"
 import introIMG from "../../assets/imgs/undraw_version_control_9bpv.svg"
-
 import OSPList from '../Project list/OSPList';
 import firebase from "../../firebase-config/firebaseConfig"
-
-import githubSignInProvider from "../Github interface/signInProvider"
-import addProject from '../addProject/AddProject';
 import AddProject from '../addProject/AddProject';
 
 
