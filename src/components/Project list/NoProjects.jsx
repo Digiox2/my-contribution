@@ -3,9 +3,8 @@ import { Button } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
 import { makeStyles } from '@material-ui/core/styles';
 import firebase from "../../firebase-config/firebaseConfig"
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+
+
 
 const useStyles = makeStyles(theme => ({
     button: {
@@ -32,15 +31,7 @@ const db = firebase.firestore()
 
 const NoProjects = () => {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-
-    const handleOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
+    
 
     const handleButtonClick = () => {
         console.log("CLIIIICK")
@@ -60,28 +51,8 @@ const NoProjects = () => {
 
     return (
         <div className={classes.centeredEmptyListMessage}>
-             <button type="button" onClick={handleOpen}>
-        react-transition-group
-      </button>
-             <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          <div className={classes.paper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">react-transition-group animates me.</p>
-          </div>
-        </Fade>
-      </Modal>
+      
+
             <h2>Oops, Our dataBase seems to be empty,
         It may just be temporary</h2>
             <Button
