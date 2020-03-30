@@ -11,7 +11,13 @@ const useStyles = makeStyles({
 });
 
 
-const displayCards = (datas) => datas.map((itemObject, key) => (<ProjectItem key={key} data={itemObject} />));
+
+const displayCards = (datas) => datas.map((itemObject, key) => (<ProjectItem key={key} 
+    repoOwner={itemObject.repoOwner}
+    repoPath={itemObject.repoPath}
+    repoName={itemObject.repoName}
+    repoUrl={itemObject.repoUrl}
+    repoDesc={itemObject.repoDesc} />));
 
 const OSPList = (props) => {
     const classes = useStyles();
