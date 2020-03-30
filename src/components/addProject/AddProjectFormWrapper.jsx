@@ -4,7 +4,9 @@ import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import ProjectItem from '../Project list/ProjectItem.jsx'
-
+import Button from '@material-ui/core/Button';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import sendToFireStore from '../../functions/sendToFireStore.js';
 
 const useStyles = makeStyles((theme) => ({
 	form: {
@@ -13,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 	selectPlaceholder: {
 		textAlign: 'center'
+	},
+	submitProjectButton: {
+		marginTop: '3%'
 	}
 }));
 
@@ -55,6 +60,15 @@ const AddProjectFormWrapper = (props) => {
 						repoUrl={selectedData.repoUrl}
 						repoDesc={selectedData.repoDesc}
 					/>
+					<Button
+						variant="contained"
+						color="default"
+						onClick={() => {sendToFireStore('projects', selectedData)}}
+						className={classes.submitProjectButton}
+						startIcon={<CloudUploadIcon />}
+					>
+						Upload
+      				</Button>
 				</div>
 			}
 		</form>
