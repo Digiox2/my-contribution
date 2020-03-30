@@ -89,7 +89,6 @@ export default function Main() {
             db.collection("repos").get().then((data) => {
                 let newState = []
                 data.forEach(async (doc) => {
-                    console.log("Data received: ", doc.data())
                     newState.push(doc.data())
                 })
                 setDatas(newState)
@@ -131,7 +130,7 @@ export default function Main() {
                                     vertical: 'top',
                                     horizontal: 'right',
                                 }}
-                                // open={open}
+                                open={false}
                                 onClose={handleClose}
                             >
                                 <MenuItem onClick={handleClose}>Profile</MenuItem>
