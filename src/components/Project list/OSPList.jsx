@@ -1,19 +1,25 @@
 import React from 'react';
-
-
+import { makeStyles } from '@material-ui/core/styles';
 import NoProjects from './NoProjects';
+import ProjectItem from './ProjectItem';
+
+const useStyles = makeStyles({
+    root: {
+        display: "flex",
+        flexDirection: "wrap"
+    }
+});
 
 
-  
+const displayCards = (datas) => datas.map((itemObject, key) => (<ProjectItem key={key} data={itemObject} />));
 
 const OSPList = (props) => {
-   
-console.log(props.datas.length)
+    const classes = useStyles();
     return (
-        <div>
+        <div className={classes.root}>
             {
-            props.datas.length < 1 ?  <NoProjects /> : <h1>test</h1>
-        }
+                props.datas.length < 1 ? <NoProjects /> : displayCards(props.datas)
+            }
         </div>
     );
 }

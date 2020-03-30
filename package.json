@@ -9,15 +9,17 @@
     "@material-ui/icons": "^4.9.1",
     "@testing-library/react": "^9.4.1",
     "axios": "^0.19.2",
-    "firebase": "^7.10.0",
+    "firebase": "^7.12.0",
     "jest": "24.9.0",
     "jest-dom": "^4.0.0",
     "puppeteer": "^2.1.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
-    "react-test-render": "^1.1.2"
+    "react-test-render": "^1.1.2",
+    "redux": "^4.0.5"
   },
   "scripts": {
     "predeploy": "npm run build",

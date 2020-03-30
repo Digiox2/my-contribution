@@ -34,7 +34,6 @@ const NoProjects = () => {
     
 
     const handleButtonClick = () => {
-        console.log("CLIIIICK")
         db.collection('repos').add({
             data1: "i am a DATA",
             link: "iamalink.com",

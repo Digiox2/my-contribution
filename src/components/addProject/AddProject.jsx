@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import firebase from "../../firebase-config/firebaseConfig";
-import Button from '@material-ui/core/Button';
-import signInProvider from "../Github interface/signInProvider";
+import SubmitProjectModal from "./SubmitProjectModal.jsx"
+import store from '../../redux/store'
+import { saveToken } from '../../redux/actions'
+import suggestGithubConnect from '../Github interface/SuggestGithubConnect.jsx'
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -16,24 +18,22 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const suggestGithubConnect = () => {
-  return (
-    <div>
-      <h2>Connectez-vous avec Github</h2>
-      <Button onClick={() => signInProvider()} variant="contained" color="primary">
-        Je me connecte
-</Button>
-    </div>
-  )
-}
 
-const user = firebase.auth().currentUser;
-console.log("User",user)
+
+
 const AddProject = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState(null)
   useEffect(() => {
+    if (user === null) {
+      firebase.auth().onAuthStateChanged(function (user) {
+        store.dispatch(saveToken(window.localStorage.getItem('token')))
+        if (user) {
+          setUser(user)
+        }
+      });
+    }
     if (props.show === true) {
       !open && handleOpen();
     } else {
@@ -49,12 +49,7 @@ const AddProject = (props) => {
     setOpen(false);
     props.callBack(false)
   };
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      setUser(user)
-      console.log("user obj", user)
-    }
-  });
+
   return (
 
     <Modal
@@ -64,7 +59,7 @@ const AddProject = (props) => {
       onClose={() => handleClose()}
     >
       <div className={classes.paper}>
-        {!user ? suggestGithubConnect() : <h1>test</h1>}
+        {!user ? suggestGithubConnect() : <SubmitProjectModal userData={user} />}
       </div>
     </Modal>
 
