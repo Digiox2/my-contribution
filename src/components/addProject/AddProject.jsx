@@ -4,7 +4,6 @@ import Modal from '@material-ui/core/Modal';
 import firebase from "../../firebase-config/firebaseConfig";
 import SubmitProjectModal from "./SubmitProjectModal.jsx"
 import store from '../../redux/store'
-import { saveToken, saveUserProfile } from '../../redux/actions'
 import suggestGithubConnect from '../Github interface/SuggestGithubConnect.jsx'
 
 const useStyles = makeStyles(theme => ({
