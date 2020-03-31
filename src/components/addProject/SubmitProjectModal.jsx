@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-
 import axios from 'axios'
 import store from '../../redux/store'
 import { makeStyles } from '@material-ui/core/styles';
 import { LinearProgress } from '@material-ui/core';
 import makeObjectData from '../../functions/makeReposObjectData'
 import AddProjectFormWrapper from './AddProjectFormWrapper';
+
 
 
 
@@ -26,12 +26,13 @@ const SubmitProjectModal = (props) => {
 
     const retrieveUserDatas = () => {
         const token = store.getState().userToken
+        const name = store.getState().userProfileObject.login
         axios.get('https://api.github.com/user/repos', {
             headers: {
                 'Authorization': 'Bearer ' + token
             }
         }).then(res => {
-            makeObjectData(res.data[0].owner.login, res.data).then(data => {
+            makeObjectData(name, res.data).then(data => {
                 setDatas(data)
             }).catch(err => console.log(err))
         }).catch(err => console.error('ERROR', err))
