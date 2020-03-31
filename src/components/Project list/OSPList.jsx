@@ -6,7 +6,7 @@ import ProjectItem from './ProjectItem';
 const useStyles = makeStyles({
     root: {
         display: "flex",
-        flexDirection: "wrap"
+        flexWrap: "wrap"
     }
 });
 

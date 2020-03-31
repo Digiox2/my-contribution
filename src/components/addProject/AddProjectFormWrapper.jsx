@@ -63,7 +63,7 @@ const AddProjectFormWrapper = (props) => {
 					<Button
 						variant="contained"
 						color="default"
-						onClick={() => {sendToFireStore('projects', selectedData)}}
+						onClick={() => {sendToFireStore('projects', selectedData).then(res => console.log(res)).catch(err => console.log(err))}}
 						className={classes.submitProjectButton}
 						startIcon={<CloudUploadIcon />}
 					>
