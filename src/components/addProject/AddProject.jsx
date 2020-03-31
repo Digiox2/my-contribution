@@ -28,7 +28,7 @@ const AddProject = (props) => {
   useEffect(() => {
     if (user === null) {
       firebase.auth().onAuthStateChanged(function (user) {
-        store.dispatch(saveToken(window.localStorage.getItem('token')))
+        // store.dispatch(saveToken(window.localStorage.getItem('token')))
         // store.dispatch(saveUserProfile(JSON.parse(window.localStorage.getItem('user'))))
         console.log(store.getState())
         if (user) {

@@ -14,6 +14,7 @@ import introIMG from "../../assets/imgs/undraw_version_control_9bpv.svg"
 import OSPList from '../Project list/OSPList';
 import firebase from "../../firebase-config/firebaseConfig"
 import AddProject from '../addProject/AddProject';
+import store from '../../redux/store'
 
 
 
@@ -85,6 +86,7 @@ export default function Main() {
 
 
     useEffect(() => {
+        store.getState()
         if (datas.length < 1) {
             db.collection("repos").get().then((data) => {
                 let newState = []
