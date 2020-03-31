@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 const SubmitProjectModal = (props) => {
-
     const classes = useStyles();
     const [userDatas, setDatas] = useState({})
     const [loaded, setLoaded] = useState(false)
