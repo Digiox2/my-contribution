@@ -20,5 +20,6 @@ export default function reducer(state = initialState, action) {
                 userProfileObject: action.value
             }
         default:
+            return state
     }
 }
