@@ -6,5 +6,6 @@ export function saveToken(token) {
     return {type: SAVE_TOKEN, value: token}
 }
 export function saveUserProfile(userObject) {
+    window.localStorage.setItem('user', JSON.stringify(userObject))
     return {type: SAVE_USER_PROFILE, value: userObject}
 }

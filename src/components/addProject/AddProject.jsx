@@ -4,7 +4,7 @@ import Modal from '@material-ui/core/Modal';
 import firebase from "../../firebase-config/firebaseConfig";
 import SubmitProjectModal from "./SubmitProjectModal.jsx"
 import store from '../../redux/store'
-import { saveToken } from '../../redux/actions'
+import { saveToken, saveUserProfile } from '../../redux/actions'
 import suggestGithubConnect from '../Github interface/SuggestGithubConnect.jsx'
 
 const useStyles = makeStyles(theme => ({
@@ -29,6 +29,8 @@ const AddProject = (props) => {
     if (user === null) {
       firebase.auth().onAuthStateChanged(function (user) {
         store.dispatch(saveToken(window.localStorage.getItem('token')))
+        // store.dispatch(saveUserProfile(JSON.parse(window.localStorage.getItem('user'))))
+        console.log(store.getState())
         if (user) {
           setUser(user)
         }
