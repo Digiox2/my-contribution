@@ -7,17 +7,12 @@ import { LinearProgress } from '@material-ui/core';
 import makeObjectData from '../../functions/makeReposObjectData'
 import AddProjectFormWrapper from './AddProjectFormWrapper';
 
-
-
-
 const useStyles = makeStyles((theme) => ({
     loadingWrapper: {
         margin: 'auto',
         textAlign: 'center'
     }
 }));
-
-
 
 
 const SubmitProjectModal = (props) => {
