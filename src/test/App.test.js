@@ -21,8 +21,8 @@ it("Should render <Main /> component", () => {
 })
 
 it("should read datas from firebase dataBase", async (done) => {
-   return db.collection("repos").doc('BRfXkUVqWgMlkX03Yh8x').get().then(doc => {
-      expect(doc.data()).toBeDefined()
+   return db.collection("repos").get().then(docs => {
+      expect(docs).toBeDefined()
       done()
    })
 })
