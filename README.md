@@ -1,4 +1,5 @@
 # How to set up this project
+TEST
 
 ## 1) Clone the project
 
