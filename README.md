@@ -2,7 +2,7 @@
 
 ## 1) Clone the project
 
-`git clone https://github.com/Digiox/my-contribution.git`
+`git z clone https://github.com/Digiox/my-contribution.git`
 
 `cd .\my-contribution\`
 
